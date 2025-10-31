@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KrodySolution - Full-Stack Developer & IT Support (ชัยวัฒน์ ร.)</title>
+    <!-- 
+        นี่คือเวอร์ชัน "Self-Contained" (ครบถ้วนในตัวเอง)
+        เราได้แปลงคลาส Tailwind ทั้งหมดเป็น CSS ธรรมดาและฝังไว้ที่นี่
+        ทำให้ไม่จำเป็นต้องโหลด https://cdn.tailwindcss.com อีกต่อไป
+        และรับประกันว่าเว็บจะแสดงผลได้ถูกต้อง 100% แม้จะเปิดจากไฟล์ในเครื่อง
+    -->
     <style>
         /* --- Google Font (Sarabun) --- */
         @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap');
@@ -298,10 +304,13 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
+    <!-- Header & Navigation -->
     <header id="main-nav">
         <div class="container" id="nav-container">
+            <!-- Logo -->
             <a href="#hero" id="nav-logo">KrodySolution</a>
 
+            <!-- Desktop Nav -->
             <nav id="nav-links">
                 <a href="#hero" class="nav-link">หน้าแรก</a>
                 <a href="#services" class="nav-link">บริการ</a>
@@ -311,6 +320,7 @@
                 <a href="#contact" class="nav-link">ติดต่อ</a>
             </nav>
 
+            <!-- Mobile Menu Button (Hamburger) -->
             <button id="mobile-menu-btn" aria-label="Toggle mobile menu">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem;">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -318,6 +328,7 @@
             </button>
         </div>
 
+        <!-- Mobile Menu (Hidden by default) -->
         <div id="mobile-menu">
             <nav class="container">
                 <a href="#hero" class="mobile-nav-link">หน้าแรก</a>
@@ -331,17 +342,20 @@
     </header>
 
     <main>
+        <!-- Hero Section -->
         <section id="hero">
             <div class="container" id="hero-content">
+                <!-- Text Content -->
                 <div id="hero-text">
                     <span class="text-primary font-semibold uppercase tracking-wider" style="color: var(--color-primary);">KrodySolution โดย ชัยวัฒน์ รุจิเมธาภาส</span>
                     <h1 class="mt-4">
                         Full-Stack Developer
                         <span class="block highlight">& IT Consultant Specialist</span>
                     </h1>
+                    <!-- UPDATED LINE BELOW -->
                     <div class="education-text">
                         M.Eng. Computer Engineering, KMUTT<br>
-                        B.Eng. [โปรดระบุสาขา], KMITL
+                        B.Eng. วิศวกรรมอิเลคทรอนิคส์, KMITL
                     </div>
                     <p class="subtitle">
                         รับพัฒนาเว็บแอปพลิเคชัน, ดูแลระบบ Server, Data Integration,
@@ -353,12 +367,14 @@
                         <a href="#services" class="btn btn-outline" style="border-color: white; color: white;">ดูบริการทั้งหมด</a>
                     </div>
                 </div>
+                <!-- Profile Image -->
                 <div id="hero-image-container">
                     <img id="hero-image" src="https://placehold.co/256x256/343a40/ffffff?text=KS" alt="KrodySolution">
                 </div>
             </div>
         </section>
 
+        <!-- Services Section -->
         <section id="services" class="section">
             <div class="container">
                 <h2 class="section-title">บริการและความเชี่ยวชาญ</h2>
@@ -368,6 +384,7 @@
                 </p>
 
                 <div id="services-grid">
+                    <!-- Service 1: Custom Web App -->
                     <div class="service-card primary">
                         <h3>Custom Web Application</h3>
                         <p>
@@ -381,6 +398,7 @@
                         </p>
                     </div>
 
+                    <!-- Service 2: Data Processing & Reporting -->
                     <div class="service-card primary">
                         <h3>Data Integration & Reporting</h3>
                         <p>
@@ -394,6 +412,7 @@
                         </p>
                     </div>
 
+                    <!-- Service 3: Database Management (DBA) -->
                     <div class="service-card primary">
                         <h3>Database Management (DBA)</h3>
                         <p>
@@ -408,6 +427,7 @@
                         </p>
                     </div>
 
+                    <!-- Service 4: Remote IT Support -->
                     <div class="service-card secondary">
                         <h3>Remote IT Support & Consultation</h3>
                         <p>
@@ -423,6 +443,7 @@
                         </p>
                     </div>
 
+                    <!-- Service 5: Server & Virtualization -->
                     <div class="service-card secondary">
                         <h3>Server & Virtualization</h3>
                         <p>
@@ -436,6 +457,7 @@
                         </p>
                     </div>
 
+                    <!-- Service 6: Website & Legacy Maintenance -->
                     <div class="service-card secondary">
                         <h3>Website & Legacy Maintenance</h3>
                         <p>
@@ -452,6 +474,7 @@
             </div>
         </section>
 
+        <!-- Portfolio Section -->
         <section id="portfolio" class="section section-gray">
             <div class="container">
                 <h2 class="section-title">สรุปผลงานสำคัญ (Portfolio)</h2>
@@ -461,6 +484,7 @@
                 </p>
 
                 <div id="portfolio-grid">
+                    <!-- Portfolio 1: LPR System -->
                     <div class="portfolio-card">
                         <img src="https://placehold.co/600x400/0d6efd/ffffff?text=LPR+System" alt="License Plate Recognition System">
                         <div class="portfolio-card-content">
@@ -473,6 +497,7 @@
                         </div>
                     </div>
                     
+                    <!-- Portfolio 2: Data Integration -->
                     <div class="portfolio-card">
                         <img src="https://placehold.co/600x400/198754/ffffff?text=Data+Integration" alt="Data Integration">
                         <div class="portfolio-card-content">
@@ -485,6 +510,7 @@
                         </div>
                     </div>
                     
+                    <!-- Portfolio 3: Back-Office Systems -->
                     <div class="portfolio-card">
                         <img src="https://placehold.co/600x400/6c757d/ffffff?text=Back-Office" alt="Back-Office Systems">
                         <div class="portfolio-card-content">
@@ -500,6 +526,7 @@
             </div>
         </section>
 
+        <!-- Clients Section -->
         <section id="clients" class="section">
             <div class="container">
                 <h2 class="section-title">ลูกค้าปัจจุบัน</h2>
@@ -517,6 +544,7 @@
             </div>
         </section>
 
+        <!-- AI Troubleshooter Section -->
         <section id="ai-tool" class="section section-gray">
             <div class="container">
                 <h2 class="section-title">✨ AI วิเคราะห์ปัญหาเบื้องต้น</h2>
@@ -539,8 +567,10 @@
             </div>
         </section>
 
+        <!-- Contact Section -->
         <section id="contact">
             <div class="container" id="contact-container">
+                <!-- Contact Info -->
                 <div id="contact-info">
                     <h2>ติดต่อจ้างงาน</h2>
                     <p>
@@ -552,6 +582,7 @@
                     
                     <div class="contact-item">
                         <div class="contact-item-icon">
+                            <!-- SVG Phone -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: white;">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.081l-6.26-1.252c-.504-.101-1.03.153-1.29.606l-1.023.998c-3.63-1.951-6.691-5.01-8.642-8.642l.998-1.023c.453-.26.707-.786.606-1.29l-1.252-6.26C4.161 3.351 3.711 3 3.195 3H1.824A2.25 2.25 0 00-.426 5.176L2.25 6.75z" />
                             </svg>
@@ -564,6 +595,7 @@
 
                     <div class="contact-item">
                         <div class="contact-item-icon">
+                            <!-- SVG Email -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: white;">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
                             </svg>
@@ -576,6 +608,7 @@
 
                     <div class="contact-item">
                         <div class="contact-item-icon">
+                            <!-- SVG Location -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: white;">
                               <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
                               <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
@@ -588,6 +621,7 @@
                     </div>
                 </div>
 
+                <!-- Contact Form (Placeholder) -->
                 <div id="contact-form-container">
                     <form action="#" method="POST">
                         <div class="form-group">
@@ -609,6 +643,7 @@
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2025 KrodySolution (นายชัยวัฒน์ รุจิเมธาภาส). สงวนลิขสิทธิ์.</p>
@@ -616,6 +651,12 @@
         </div>
     </footer>
 
+    <!-- 
+        =================================
+        JAVASCRIPT SECTION
+        =================================
+        รวมโค้ด JS ทั้งหมดไว้ที่นี่ และทำงานหลังจาก DOM โหลดเสร็จ
+    -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             
