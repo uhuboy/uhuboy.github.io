@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="th" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KrodySolution - Full-Stack Developer & IT Support (ชัยวัฒน์ ร.)</title>
+    <style>
+        /* --- Google Font (Sarabun) --- */
+        @import url('https://fonts.googleapis.com/css2?family=Sarabun:wght@400;500;600;700&display=swap');
+        
+        /* --- CSS Reset (Tailwind Preflight) --- */
+        *,::before,::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb }
+        html { line-height: 1.5; -webkit-text-size-adjust: 100%; -moz-tab-size: 4; tab-size: 4; font-family: 'Sarabun', sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; font-feature-settings: normal; font-variation-settings: normal }
+        body { margin: 0; line-height: inherit }
+        h1,h2,h3,h4,h5,h6 { font-size: inherit; font-weight: inherit }
+        a { color: inherit; text-decoration: inherit }
+        button, input, optgroup, select, textarea { font-family: inherit; font-size: 100%; font-weight: inherit; line-height: inherit; color: inherit; margin: 0; padding: 0 }
+        button, select { text-transform: none }
+        button, [type='button'], [type='reset'], [type='submit'] { -webkit-appearance: button; background-color: transparent; background-image: none }
+        img, svg, video, canvas, audio, iframe, embed, object { display: block; vertical-align: middle }
+        img, video { max-width: 100%; height: auto }
+
+        /* --- Custom Styles --- */
+        body { font-family: 'Sarabun', sans-serif; background-color: #f8f9fa; color: #343a40; }
+        .container { width: 100%; margin-left: auto; margin-right: auto; padding-left: 1rem; padding-right: 1rem; }
+        @media (min-width: 640px) { .container { max-width: 640px; } }
+        @media (min-width: 768px) { .container { max-width: 768px; } }
+        @media (min-width: 1024px) { .container { max-width: 1024px; padding-left: 2rem; padding-right: 2rem; } }
+        @media (min-width: 1280px) { .container { max-width: 1280px; } }
+
+        /* --- Variables --- */
+        :root {
+            --color-primary: #0d6efd; /* Blue */
+            --color-secondary: #198754; /* Green */
+            --color-dark: #212529;
+            --color-light: #f8f9fa;
+        }
+
+        /* --- Components --- */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .btn-primary { background-color: var(--color-primary); color: white; }
+        .btn-primary:hover { background-color: #0b5ed7; }
+        .btn-secondary { background-color: var(--color-secondary); color: white; }
+        .btn-secondary:hover { background-color: #157347; }
+        .btn-outline { border: 2px solid var(--color-primary); color: var(--color-primary); }
+        .btn-outline:hover { background-color: var(--color-primary); color: white; }
+        
+        .section-title { font-size: 2.25rem; line-height: 2.5rem; font-weight: 700; text-align: center; margin-bottom: 1rem; }
+        .section-subtitle { font-size: 1.125rem; line-height: 1.75rem; text-align: center; color: #6c757d; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto; }
+
+        /* --- Header & Nav --- */
+        #main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 50;
+            background-color: rgba(33, 37, 41, 0.95); /* dark bg with opacity */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        #nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 4.5rem; /* 72px */
+        }
+        #nav-logo { font-size: 1.5rem; line-height: 2rem; font-weight: 700; }
+        #nav-links { display: none; }
+        @media (min-width: 1024px) {
+            #nav-links { display: flex; gap: 1.5rem; }
+        }
+        .nav-link { font-weight: 500; color: #adb5bd; transition: color 0.3s ease; }
+        .nav-link:hover { color: white; }
+        #mobile-menu-btn { display: block; padding: 0.5rem; border-radius: 0.375rem; cursor: pointer; }
+        @media (min-width: 1024px) { #mobile-menu-btn { display: none; } }
+        #mobile-menu {
+            display: none; /* Hidden by default, JS will toggle */
+            background-color: var(--color-dark);
+            padding: 1rem 0;
+        }
+        @media (min-width: 1024px) { #mobile-menu { display: none !important; } }
+        .mobile-nav-link {
+            display: block;
+            padding: 0.75rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+        }
+
+        /* --- Hero Section --- */
+        #hero {
+            background-color: var(--color-dark);
+            color: white;
+            padding-top: 10rem;
+            padding-bottom: 6rem;
+        }
+        #hero-content {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            text-align: center;
+        }
+        @media (min-width: 1024px) {
+            #hero-content { flex-direction: row; text-align: left; }
+        }
+        #hero-text { flex: 1; }
+        #hero-text h1 { font-size: 2.5rem; line-height: 1.2; font-weight: 700; }
+        @media (min-width: 768px) { #hero-text h1 { font-size: 3.75rem; } }
+        #hero-text h1 .highlight { color: var(--color-primary); }
+        #hero-text .education-text { 
+            font-size: 1.125rem; 
+            color: #ced4da; 
+            margin-top: 1rem; 
+            font-weight: 500;
+        }
+        #hero-text p.subtitle { font-size: 1.125rem; line-height: 1.75rem; color: #ced4da; margin-top: 1.5rem; margin-bottom: 2rem; max-width: 600px; }
+        @media (min-width: 1024px) { #hero-text p.subtitle { max-width: none; } }
+        #hero-buttons { display: flex; flex-direction: column; gap: 1rem; }
+        @media (min-width: 640px) { #hero-buttons { flex-direction: row; justify-content: center; } }
+        @media (min-width: 1024px) { #hero-buttons { justify-content: flex-start; } }
+        #hero-image-container { flex-shrink: 0; }
+        #hero-image {
+            width: 12rem; /* 192px */
+            height: 12rem;
+            border-radius: 9999px;
+            border: 4px solid var(--color-primary);
+            box-shadow: 0 10px 15px -3px rgba(13, 110, 253, 0.3);
+            object-fit: cover;
+        }
+        @media (min-width: 768px) { #hero-image { width: 16rem; height: 16rem; } }
+
+        /* --- Sections --- */
+        .section { padding-top: 5rem; padding-bottom: 5rem; }
+        .section-gray { background-color: #ffffff; }
+
+        /* --- Services --- */
+        #services-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) { #services-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 1024px) { #services-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        .service-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07), 0 4px 6px -2px rgba(0,0,0,0.05);
+            border-top: 4px solid;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+        }
+        .service-card.primary { border-color: var(--color-primary); }
+        .service-card.secondary { border-color: var(--color-secondary); }
+        .service-card h3 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 700; margin-bottom: 0.75rem; }
+        .service-card p { color: #495057; margin-bottom: 1rem; line-height: 1.6; }
+        .service-card .keywords-title { font-size: 0.875rem; font-weight: 600; color: #343a40; margin-bottom: 0.5rem; margin-top: 1.5rem; }
+        .service-card .keywords-text { font-size: 0.875rem; color: #495057; line-height: 1.5; }
+
+        /* --- Portfolio --- */
+        #portfolio-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+        @media (min-width: 768px) { #portfolio-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 1024px) { #portfolio-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+        .portfolio-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+        .portfolio-card img { width: 100%; height: 200px; object-fit: cover; }
+        .portfolio-card-content { padding: 1.5rem; }
+        .portfolio-card-content h3 { font-size: 1.125rem; line-height: 1.75rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .portfolio-card-content p { font-size: 0.875rem; line-height: 1.25rem; color: #6c757d; }
+
+        /* --- Clients --- */
+        #client-logos {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        .client-logo {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: #6c757d;
+            text-align: center;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            background-color: #e9ecef;
+            min-width: 200px;
+        }
+
+        /* --- AI Troubleshooter --- */
+        #ai-tool-container {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.07);
+        }
+        #ai-input {
+            width: 100%;
+            border: 2px solid #ced4da;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        #ai-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+        }
+        #ai-result {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            min-height: 100px;
+            margin-top: 1rem;
+            white-space: pre-wrap; /* Allows line breaks */
+            font-family: monospace;
+            color: #495057;
+            line-height: 1.6;
+        }
+        #ai-result.loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #6c757d;
+        }
+
+        /* --- Contact --- */
+        #contact { background-color: var(--color-dark); color: white; }
+        #contact-container {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+        }
+        @media (min-width: 1024px) { #contact-container { flex-direction: row; } }
+        #contact-info { flex: 1; }
+        #contact-info h2 { font-size: 2.25rem; line-height: 2.5rem; font-weight: 700; }
+        #contact-info p { font-size: 1.125rem; line-height: 1.75rem; color: #adb5bd; margin-top: 1rem; margin-bottom: 2rem; }
+        .contact-item { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .contact-item-icon { flex-shrink: 0; width: 2.5rem; height: 2.5rem; border-radius: 9999px; background-color: var(--color-primary); display: flex; justify-content: center; align-items: center; }
+        .contact-item-text span { display: block; }
+        .contact-item-text .label { font-size: 0.875rem; color: #adb5bd; }
+        .contact-item-text .value { font-weight: 600; }
+        
+        #contact-form-container { flex: 1.5; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; font-weight: 600; margin-bottom: 0.5rem; color: #ced4da; }
+        .form-input {
+            width: 100%;
+            background-color: #495057;
+            border: 2px solid #6c757d;
+            color: white;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1rem;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-input::placeholder { color: #adb5bd; }
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-primary);
+            background-color: #343a40;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+        }
+        textarea.form-input { min-height: 150px; resize: vertical; }
+
+        /* --- Footer --- */
+        footer { background-color: #212529; padding: 2rem 0; text-align: center; color: #adb5bd; border-top: 1px solid #343a40; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header id="main-nav">
+        <div class="container" id="nav-container">
+            <a href="#hero" id="nav-logo">KrodySolution</a>
+
+            <nav id="nav-links">
+                <a href="#hero" class="nav-link">หน้าแรก</a>
+                <a href="#services" class="nav-link">บริการ</a>
+                <a href="#portfolio" class="nav-link">ผลงาน</a>
+                <a href="#clients" class="nav-link">ลูกค้า</a>
+                <a href="#ai-tool" class="nav-link">AI วิเคราะห์</a>
+                <a href="#contact" class="nav-link">ติดต่อ</a>
+            </nav>
+
+            <button id="mobile-menu-btn" aria-label="Toggle mobile menu">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 2rem; height: 2rem;">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="mobile-menu">
+            <nav class="container">
+                <a href="#hero" class="mobile-nav-link">หน้าแรก</a>
+                <a href="#services" class="mobile-nav-link">บริการ</a>
+                <a href="#portfolio" class="mobile-nav-link">ผลงาน</a>
+                <a href="#clients" class="mobile-nav-link">ลูกค้า</a>
+                <a href="#ai-tool" class="mobile-nav-link">AI วิเคราะห์</a>
+                <a href="#contact" class="mobile-nav-link">ติดต่อ</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="container" id="hero-content">
+                <div id="hero-text">
+                    <span class="text-primary font-semibold uppercase tracking-wider" style="color: var(--color-primary);">KrodySolution โดย ชัยวัฒน์ รุจิเมธาภาส</span>
+                    <h1 class="mt-4">
+                        Full-Stack Developer
+                        <span class="block highlight">& IT Consultant Specialist</span>
+                    </h1>
+                    <div class="education-text">
+                        M.Eng. Computer Engineering, KMUTT<br>
+                        B.Eng. [โปรดระบุสาขา], KMITL
+                    </div>
+                    <p class="subtitle">
+                        รับพัฒนาเว็บแอปพลิเคชัน, ดูแลระบบ Server, Data Integration,
+                        และ Remote Support แก้ไขปัญหา IT ครบวงจร
+                        ด้วยประสบการณ์ตรงกว่า 10 ปี
+                    </p>
+                    <div id="hero-buttons">
+                        <a href="#contact" class="btn btn-primary">ติดต่อจ้างงาน</a>
+                        <a href="#services" class="btn btn-outline" style="border-color: white; color: white;">ดูบริการทั้งหมด</a>
+                    </div>
+                </div>
+                <div id="hero-image-container">
+                    <img id="hero-image" src="https://placehold.co/256x256/343a40/ffffff?text=KS" alt="KrodySolution">
+                </div>
+            </div>
+        </section>
+
+        <section id="services" class="section">
+            <div class="container">
+                <h2 class="section-title">บริการและความเชี่ยวชาญ</h2>
+                <p class="section-subtitle">
+                    แก้ปัญหาจบในคนเดียว (End-to-End) ทั้งการพัฒนาแอปพลิเคชันใหม่,
+                    การดูแลระบบเก่า, และการซัพพอร์ตโครงสร้างพื้นฐาน (Infrastructure)
+                </p>
+
+                <div id="services-grid">
+                    <div class="service-card primary">
+                        <h3>Custom Web Application</h3>
+                        <p>
+                            พัฒนาเว็บแอปพลิเคชันสำหรับธุรกิจ (Bespoke Solutions)
+                            เช่น ระบบคลังสินค้า, ระบบ HR, ระบบจองห้องประชุม,
+                            ระบบเคลมและใบเสนอราคา
+                        </p>
+                        <p class="keywords-title">เชี่ยวชาญ:</p>
+                        <p class="keywords-text">
+                            PHP (Yii Framework, CodeIgniter), ASP.NET (C#, VB.NET), JSP, Oracle, MySQL, MS SQL
+                        </p>
+                    </div>
+
+                    <div class="service-card primary">
+                        <h3>Data Integration & Reporting</h3>
+                        <p>
+                            ดึงข้อมูลจากระบบบัญชี (การ์ดลูกค้า, สินค้า, สต็อก)
+                            เพื่อนำเข้าเว็บแอปฯสำหรับแสดงผลและทำรายงาน
+                            หรือคำนวณสูตรการผลิตที่ซับซ้อน และส่งออกเป็น PDF/Excel
+                        </p>
+                        <p class="keywords-title">เทคโนโลยี:</p>
+                        <p class="keywords-text">
+                            C#, VB.NET, ERP/Accounting Data Export, Data Transformation, PDF Generation, Excel Reporting
+                        </p>
+                    </div>
+
+                    <div class="service-card primary">
+                        <h3>Database Management (DBA)</h3>
+                        <p>
+                            บริหารจัดการฐานข้อมูลครบวงจร ทั้งการติดตั้ง,
+                            แบคอัพอัตโนมัติ, ย้ายฐานข้อมูลขึ้น Cloud,
+                            ตรวจสอบและซ่อมแซม (Repair/Recovery) และเขียน Script
+                            สำหรับงานที่ต้องทำประจำ
+                        </p>
+                        <p class="keywords-title">ฐานข้อมูล:</p>
+                        <p class="keywords-text">
+                            Oracle, MySQL, MS SQL Server, Performance Tuning, Backup & Recovery
+                        </p>
+                    </div>
+
+                    <div class="service-card secondary">
+                        <h3>Remote IT Support & Consultation</h3>
+                        <p>
+                            รีโมทซัพพอร์ตแก้ปัญหา IT ครบวงจร:
+                            แก้ไขข้อผิดพลาดของโปรแกรม, ติดตั้งซอฟต์แวร์,
+                            ปัญหาการเชื่อมต่อโปรแกรมบัญชี, ติดตั้ง VPN,
+                            วินิจฉัยปัญหา Network (เชื่อมต่อไม่ได้/ช้า)
+                            และให้คำปรึกษาการจัดซื้อ Hardware
+                        </p>
+                        <p class="keywords-title">ความครอบคลุม:</p>
+                        <p class="keywords-text">
+                            Remote Support, Program Errors, Accounting Software, VPN, Network Diagnostics, Hardware Consultation
+                        </p>
+                    </div>
+
+                    <div class="service-card secondary">
+                        <h3>Server & Virtualization</h3>
+                        <p>
+                            บริหารจัดการ Server ทั้ง Physical และ Virtual Machine
+                            ดูแลระบบปฏิบัติการเซิร์ฟเวอร์, ติดตั้ง VPN เชื่อมสาขา,
+                            และดูแลสภาพแวดล้อม Virtualization
+                        </p>
+                        <p class="keywords-title">OS & Hypervisors:</p>
+                        <p class="keywords-text">
+                            Linux Server (Ubuntu/CentOS), Solaris, Windows Server, VMware, Hyper-V
+                        </p>
+                    </div>
+
+                    <div class="service-card secondary">
+                        <h3>Website & Legacy Maintenance</h3>
+                        <p>
+                            รับดูแลและแก้ไขระบบเดิม (Legacy System)
+                            ที่หาคนดูแลยาก รวมถึงการพัฒนา Plugin/Theme
+                            สำหรับ WordPress และดูแลเว็บไซต์ทั่วไป
+                        </p>
+                        <p class="keywords-title">เทคโนโลยีเก่าที่รองรับ:</p>
+                        <p class="keywords-text">
+                            WordPress (Theme/Plugin Dev), VB.NET, Classic ASP, C# (Maintenance)
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio" class="section section-gray">
+            <div class="container">
+                <h2 class="section-title">สรุปผลงานสำคัญ (Portfolio)</h2>
+                <p class="section-subtitle">
+                    ประสบการณ์จริงในการพัฒนาระบบที่ซับซ้อน
+                    และการจัดการข้อมูลสำคัญทางธุรกิจ
+                </p>
+
+                <div id="portfolio-grid">
+                    <div class="portfolio-card">
+                        <img src="https://placehold.co/600x400/0d6efd/ffffff?text=LPR+System" alt="License Plate Recognition System">
+                        <div class="portfolio-card-content">
+                            <h3>Advanced Tech & Computer Vision</h3>
+                            <p>
+                                พัฒนาระบบตรวจจับแผ่นป้ายทะเบียนรถ (LPR)
+                                จากวิดีโอของตำรวจ สกัดภาพ Snapshots
+                                และสร้าง Interface ให้ผู้ใช้งานเลือกภาพที่ต้องการ
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-card">
+                        <img src="https://placehold.co/600x400/198754/ffffff?text=Data+Integration" alt="Data Integration">
+                        <div class="portfolio-card-content">
+                            <h3>Data Integration (ERP to Web)</h3>
+                            <p>
+                                เชื่อมต่อและส่งออกข้อมูล (การ์ดลูกค้า/สินค้า)
+                                จากระบบบัญชี/ERP
+                                เพื่อนำไปประมวลผลและแสดงผลบนเว็บแอปพลิเคชัน
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="portfolio-card">
+                        <img src="https://placehold.co/600x400/6c757d/ffffff?text=Back-Office" alt="Back-Office Systems">
+                        <div class="portfolio-card-content">
+                            <h3>Business Back-Office Systems</h3>
+                            <p>
+                                พัฒนาระบบสนับสนุนธุรกิจ เช่น ระบบ HR
+                                มหาวิทยาลัย, ระบบคลังสินค้า,
+                                และระบบจองห้องประชุม (ASP.NET, PHP, JSP)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="clients" class="section">
+            <div class="container">
+                <h2 class="section-title">ลูกค้าปัจจุบัน</h2>
+                <p class="section-subtitle">
+                    ได้รับความไว้วางใจในการดูแลระบบและให้คำปรึกษา
+                    แก่ธุรกิจหลากหลายประเภท
+                </p>
+                <div id="client-logos">
+                    <div class="client-logo">บริษัทบัญชี</div>
+                    <div class="client-logo">บริษัทนำเข้าสินค้า</div>
+                    <div class="client-logo">Co-Working Space</div>
+                    <div class="client-logo">ร้านค้าออนไลน์ (E-commerce)</div>
+                    <div class="client-logo">ธุรกิจ SME ขนาดเล็ก-กลาง</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai-tool" class="section section-gray">
+            <div class="container">
+                <h2 class="section-title">✨ AI วิเคราะห์ปัญหาเบื้องต้น</h2>
+                <p class="section-subtitle">
+                    ลองอธิบายปัญหา IT หรือโปรแกรมของคุณ
+                    เพื่อให้ AI (Gemini)
+                    ช่วยวิเคราะห์และให้คำแนะนำขั้นตอนการแก้ไขเบื้องต้น
+                </p>
+                
+                <div id="ai-tool-container">
+                    <label for="ai-input" class="form-label" style="color: #343a40;">อธิบายปัญหาของคุณที่นี่:</label>
+                    <textarea id="ai-input" class="form-input" style="background-color: white; border-color: #ced4da; color: #343a40;" rows="3" placeholder="เช่น: โปรแกรมบัญชีช้ามากเวลาเปิดใบเสนอราคา, เชื่อมต่อ VPN ไม่ได้ ขึ้น Error 720, คอมพิวเตอร์รีสตาร์ทเอง..."></textarea>
+                    <button id="analyzeButton" class="btn btn-primary" style="width: 100%;">
+                        วิเคราะห์ปัญหา ✨
+                    </button>
+                    <div id="ai-result" class="loading">
+                        รอรับคำแนะนำจาก AI...
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container" id="contact-container">
+                <div id="contact-info">
+                    <h2>ติดต่อจ้างงาน</h2>
+                    <p>
+                        กำลังมองหาฟรีแลนส์ที่เข้าใจทั้งระบบ
+                        (Development + Infrastructure) ใช่ไหม?
+                        ผมพร้อมให้คำปรึกษาและรีโมทเข้าไปช่วยคุณแก้ปัญหา
+                        ติดต่อได้เลยครับ
+                    </p>
+                    
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: white;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.081l-6.26-1.252c-.504-.101-1.03.153-1.29.606l-1.023.998c-3.63-1.951-6.691-5.01-8.642-8.642l.998-1.023c.453-.26.707-.786.606-1.29l-1.252-6.26C4.161 3.351 3.711 3 3.195 3H1.824A2.25 2.25 0 00-.426 5.176L2.25 6.75z" />
+                            </svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <span class="label">โทรศัพท์</span>
+                            <span class="value">085-159-1921</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: white;">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
+                            </svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <span class="label">อีเมล</span>
+                            <span class="value">uhuboy@yahoo.com</span>
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: white;">
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                            </svg>
+                        </div>
+                        <div class="contact-item-text">
+                            <span class="label">ที่อยู่ (สำหรับออกบิล/ติดต่อ)</span>
+                            <span class="value">178 ม.3 ต.หาดกรวด อ.เมือง จ.อุตรดิตถ์ 53000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="contact-form-container">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name" class="form-label">ชื่อของคุณ</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="ชื่อ-นามสกุล">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="form-label">อีเมลติดต่อกลับ</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="message" class="form-label">รายละเอียดงาน หรือ ปัญหาที่พบ</label>
+                            <textarea id="message" name="message" class="form-input" placeholder="อธิบายงานที่ต้องการให้ช่วย หรือปัญหาที่พบโดยละเอียด..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">ส่งข้อความ</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 KrodySolution (นายชัยวัฒน์ รุจิเมธาภาส). สงวนลิขสิทธิ์.</p>
+            <p style="font-size: 0.875rem; color: #6c757d; margin-top: 0.5rem;">พัฒนาและออกแบบโดยความช่วยเหลือจาก AI</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            
+            // --- Mobile Menu Toggle ---
+            const menuBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll("a") : [];
+
+            if (menuBtn && mobileMenu) {
+                // Toggle menu on button click
+                menuBtn.addEventListener("click", () => {
+                    const isHidden = mobileMenu.style.display === "none" || mobileMenu.style.display === "";
+                    mobileMenu.style.display = isHidden ? "block" : "none";
+                });
+
+                // Close menu when a link is clicked
+                mobileLinks.forEach(link => {
+                    link.addEventListener("click", () => {
+                        mobileMenu.style.display = "none";
+                    });
+                });
+            } else {
+                console.warn("Mobile menu elements not found.");
+            }
+
+            // --- AI Troubleshooter (Gemini API) ---
+            const analyzeButton = document.getElementById("analyzeButton");
+            const aiInput = document.getElementById("ai-input");
+            const aiResult = document.getElementById("ai-result");
+
+            if (analyzeButton && aiInput && aiResult) {
+                
+                analyzeButton.addEventListener("click", async () => {
+                    const userProblem = aiInput.value;
+                    if (!userProblem.trim()) {
+                        aiResult.textContent = "กรุณาพิมพ์ปัญหาของคุณก่อนครับ";
+                        aiResult.classList.remove("loading");
+                        return;
+                    }
+
+                    aiResult.textContent = "กำลังวิเคราะห์ปัญหาด้วย AI... กรุณารอสักครู่ครับ...";
+                    aiResult.classList.add("loading");
+                    analyzeButton.disabled = true;
+
+                    // System prompt for the AI
+                    const systemPrompt = `
+                        คุณคือ "ผู้เชี่ยวชาญ IT Support" ที่เป็นมิตรและเก่งกาจ (ชื่อ "ชัยวัฒน์" จาก KrodySolution) 
+                        งานของคุณคือการวิเคราะห์ปัญหาที่ผู้ใช้ทั่วไปพิมพ์เข้ามา (เป็นภาษาไทย) และให้คำแนะนำเบื้องต้น (เป็นภาษาไทย) ที่พวกเขาสามารถลองทำเองได้ก่อน
+                        
+                        กฎการตอบ:
+                        1.  ตอบเป็นภาษาไทย
+                        2.  ขึ้นต้นด้วยการทักทายและสรุปปัญหาที่รับทราบสั้นๆ
+                        3.  ให้คำแนะนำเป็นขั้นตอน 3-5 ข้อที่ชัดเจนและเข้าใจง่ายสำหรับคนทั่วไป
+                        4.  ห้ามให้คำแนะนำที่อันตราย เช่น ลบไฟล์ระบบ หรือ แก้ไข Registry
+                        5.  ลงท้ายด้วยการบอกว่า "หากทำตามขั้นตอนแล้วยังไม่หาย กรุณาติดต่อ "KrodySolution" (ผู้เชี่ยวชาญตัวจริง) เพื่อ Remote Support ได้เลยครับ"
+                    `;
+
+                    // Gemini API Call
+                    const apiKey = ""; // Canvas will provide this
+                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
+                    
+                    const payload = {
+                        contents: [{ parts: [{ text: userProblem }] }],
+                        systemInstruction: {
+                            parts: [{ text: systemPrompt }]
+                        },
+                    };
+
+                    try {
+                        let response = await fetch(apiUrl, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(payload)
+                        });
+
+                        if (!response.ok) {
+                             // Implement basic exponential backoff
+                            let retries = 3;
+                            let delay = 1000;
+                            while (retries > 0 && !response.ok) {
+                                await new Promise(resolve => setTimeout(resolve, delay));
+                                response = await fetch(apiUrl, {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(payload)
+                                });
+                                retries--;
+                                delay *= 2;
+                            }
+                        }
+
+                        if (!response.ok) {
+                            throw new Error(`API Error: ${response.status} ${response.statusText}`);
+                        }
+
+                        const result = await response.json();
+                        
+                        if (result.candidates && result.candidates[0].content.parts[0].text) {
+                            const aiText = result.candidates[0].content.parts[0].text;
+                            aiResult.textContent = aiText;
+                        } else {
+                            throw new Error("Invalid AI response format.");
+                        }
+
+                    } catch (error) {
+                        console.error("Error calling Gemini API:", error);
+                        aiResult.textContent = "ขออภัยครับ เกิดข้อผิดพลาดในการเชื่อมต่อกับ AI (อาจจะลองใหม่อีกครั้ง) \n\n" + error.message;
+                    } finally {
+                        aiResult.classList.remove("loading");
+                        analyzeButton.disabled = false;
+                    }
+                });
+
+            } else {
+                console.warn("AI analysis tool elements not found.");
+            }
+
+        });
+    </script>
+
+</body>
+</html>
