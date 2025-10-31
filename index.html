@@ -208,14 +208,15 @@
             gap: 2rem;
         }
         .client-logo {
-            font-size: 1.125rem;
+            font-size: 1rem; /* Adjusted for longer names */
             font-weight: 600;
             color: #6c757d;
             text-align: center;
             padding: 1rem;
             border-radius: 0.5rem;
             background-color: #e9ecef;
-            min-width: 200px;
+            min-width: 240px; /* Increased min-width */
+            line-height: 1.4;
         }
 
         /* --- AI Troubleshooter --- */
@@ -350,14 +351,12 @@
                     <span class="text-primary font-semibold uppercase tracking-wider" style="color: var(--color-primary);">KrodySolution โดย ชัยวัฒน์ รุจิเมธาภาส</span>
                     <h1 class="mt-4">
                         Full-Stack Developer
-                        <!-- UPDATED LINE BELOW -->
                         <span class="block highlight">& Digital Marketing Specialist</span>
                     </h1>
                     <div class="education-text">
                         M.Eng. Computer Engineering, KMUTT<br>
                         B.Eng. Electrical Engineering, KMITL
                     </div>
-                    <!-- UPDATED PARAGRAPH BELOW -->
                     <p class="subtitle">
                         รับพัฒนาเว็บแอปพลิเคชัน, ดูแลระบบ Server, การตลาดออนไลน์ (SEO/Ads),
                         และ Remote Support แก้ไขปัญหา IT ครบวงจร
@@ -536,12 +535,17 @@
                     ได้รับความไว้วางใจในการดูแลระบบและให้คำปรึกษา
                     แก่ธุรกิจหลากหลายประเภท
                 </p>
+                <!-- UPDATED CLIENT LIST BELOW -->
                 <div id="client-logos">
-                    <div class="client-logo">บริษัทบัญชี</div>
-                    <div class="client-logo">บริษัทนำเข้าสินค้า</div>
-                    <div class="client-logo">Co-Working Space</div>
-                    <div class="client-logo">ร้านค้าออนไลน์ (E-commerce)</div>
-                    <div class="client-logo">ธุรกิจ SME ขนาดเล็ก-กลาง</div>
+                    <div class="client-logo">
+                        บริษัท ดี ดับเบิลยู คอนซัลแทนท์ แอนด์ เมเนจเม้นท์ จำกัด
+                    </div>
+                    <div class="client-logo">
+                        ไทยไลฟ์เวลล์ จ้าวแห่งพัดลมไอเย็น
+                    </div>
+                    <div class="client-logo">
+                        AlegriaConcept (ออกแบบและรีโนเวทร้าน)
+                    </div>
                 </div>
             </div>
         </section>
@@ -600,184 +604,3 @@
                             <!-- SVG Email -->
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: white;">
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />
-                            </svg>
-                        </div>
-                        <div class="contact-item-text">
-                            <span class="label">อีเมล</span>
-                            <span class="value">uhuboy@yahoo.com</span>
-                        </div>
-                    </div>
-
-                    <div class="contact-item">
-                        <div class="contact-item-icon">
-                            <!-- SVG Location -->
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 1.5rem; height: 1.5rem; color: white;">
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
-                              <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
-                            </svg>
-                        </div>
-                        <div class="contact-item-text">
-                            <span class="label">ที่อยู่ (สำหรับออกบิล/ติดต่อ)</span>
-                            <span class="value">178 ม.3 ต.หาดกรวด อ.เมือง จ.อุตรดิตถ์ 53000</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Contact Form (Placeholder) -->
-                <div id="contact-form-container">
-                    <form action="#" method="POST">
-                        <div class="form-group">
-                            <label for="name" class="form-label">ชื่อของคุณ</label>
-                            <input type="text" id="name" name="name" class="form-input" placeholder="ชื่อ-นามสกุล">
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-label">อีเมลติดต่อกลับ</label>
-                            <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="form-label">รายละเอียดงาน หรือ ปัญหาที่พบ</label>
-                            <textarea id="message" name="message" class="form-input" placeholder="อธิบายงานที่ต้องการให้ช่วย หรือปัญหาที่พบโดยละเอียด..."></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">ส่งข้อความ</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 KrodySolution (นายชัยวัฒน์ รุจิเมธาภาส). สงวนลิขสิทธิ์.</p>
-            <p style="font-size: 0.875rem; color: #6c757d; margin-top: 0.5rem;">พัฒนาและออกแบบโดยความช่วยเหลือจาก AI</p>
-        </div>
-    </footer>
-
-    <!-- 
-        =================================
-        JAVASCRIPT SECTION
-        =================================
-        รวมโค้ด JS ทั้งหมดไว้ที่นี่ และทำงานหลังจาก DOM โหลดเสร็จ
-    -->
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            
-            // --- Mobile Menu Toggle ---
-            const menuBtn = document.getElementById("mobile-menu-btn");
-            const mobileMenu = document.getElementById("mobile-menu");
-            const mobileLinks = mobileMenu ? mobileMenu.querySelectorAll("a") : [];
-
-            if (menuBtn && mobileMenu) {
-                // Toggle menu on button click
-                menuBtn.addEventListener("click", () => {
-                    const isHidden = mobileMenu.style.display === "none" || mobileMenu.style.display === "";
-                    mobileMenu.style.display = isHidden ? "block" : "none";
-                });
-
-                // Close menu when a link is clicked
-                mobileLinks.forEach(link => {
-                    link.addEventListener("click", () => {
-                        mobileMenu.style.display = "none";
-                    });
-                });
-            } else {
-                console.warn("Mobile menu elements not found.");
-            }
-
-            // --- AI Troubleshooter (Gemini API) ---
-            const analyzeButton = document.getElementById("analyzeButton");
-            const aiInput = document.getElementById("ai-input");
-            const aiResult = document.getElementById("ai-result");
-
-            if (analyzeButton && aiInput && aiResult) {
-                
-                analyzeButton.addEventListener("click", async () => {
-                    const userProblem = aiInput.value;
-                    if (!userProblem.trim()) {
-                        aiResult.textContent = "กรุณาพิมพ์ปัญหาของคุณก่อนครับ";
-                        aiResult.classList.remove("loading");
-                        return;
-                    }
-
-                    aiResult.textContent = "กำลังวิเคราะห์ปัญหาด้วย AI... กรุณารอสักครู่ครับ...";
-                    aiResult.classList.add("loading");
-                    analyzeButton.disabled = true;
-
-                    // System prompt for the AI
-                    const systemPrompt = `
-                        คุณคือ "ผู้เชี่ยวชาญ IT Support" ที่เป็นมิตรและเก่งกาจ (ชื่อ "ชัยวัฒน์" จาก KrodySolution) 
-                        งานของคุณคือการวิเคราะห์ปัญหาที่ผู้ใช้ทั่วไปพิมพ์เข้ามา (เป็นภาษาไทย) และให้คำแนะนำเบื้องต้น (เป็นภาษาไทย) ที่พวกเขาสามารถลองทำเองได้ก่อน
-                        
-                        กฎการตอบ:
-                        1.  ตอบเป็นภาษาไทย
-                        2.  ขึ้นต้นด้วยการทักทายและสรุปปัญหาที่รับทราบสั้นๆ
-                        3.  ให้คำแนะนำเป็นขั้นตอน 3-5 ข้อที่ชัดเจนและเข้าใจง่ายสำหรับคนทั่วไป
-                        4.  ห้ามให้คำแนะนำที่อันตราย เช่น ลบไฟล์ระบบ หรือ แก้ไข Registry
-                        5.  ลงท้ายด้วยการบอกว่า "หากทำตามขั้นตอนแล้วยังไม่หาย กรุณาติดต่อ "KrodySolution" (ผู้เชี่ยวชาญตัวจริง) เพื่อ Remote Support ได้เลยครับ"
-                    `;
-
-                    // Gemini API Call
-                    const apiKey = ""; // Canvas will provide this
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
-                    
-                    const payload = {
-                        contents: [{ parts: [{ text: userProblem }] }],
-                        systemInstruction: {
-                            parts: [{ text: systemPrompt }]
-                        },
-                    };
-
-                    try {
-                        let response = await fetch(apiUrl, {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(payload)
-                        });
-
-                        if (!response.ok) {
-                             // Implement basic exponential backoff
-                            let retries = 3;
-                            let delay = 1000;
-                            while (retries > 0 && !response.ok) {
-                                await new Promise(resolve => setTimeout(resolve, delay));
-                                response = await fetch(apiUrl, {
-                                    method: 'POST',
-                                    headers: { 'Content-Type': 'application/json' },
-                                    body: JSON.stringify(payload)
-                                });
-                                retries--;
-                                delay *= 2;
-                            }
-                        }
-
-                        if (!response.ok) {
-                            throw new Error(`API Error: ${response.status} ${response.statusText}`);
-                        }
-
-                        const result = await response.json();
-                        
-                        if (result.candidates && result.candidates[0].content.parts[0].text) {
-                            const aiText = result.candidates[0].content.parts[0].text;
-                            aiResult.textContent = aiText;
-                        } else {
-                            throw new Error("Invalid AI response format.");
-                        }
-
-                    } catch (error) {
-                        console.error("Error calling Gemini API:", error);
-                        aiResult.textContent = "ขออภัยครับ เกิดข้อผิดพลาดในการเชื่อมต่อกับ AI (อาจจะลองใหม่อีกครั้ง) \n\n" + error.message;
-                    } finally {
-                        aiResult.classList.remove("loading");
-                        analyzeButton.disabled = false;
-                    }
-                });
-
-            } else {
-                console.warn("AI analysis tool elements not found.");
-            }
-
-        });
-    </script>
-
-</body>
-</html>
